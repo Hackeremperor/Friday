@@ -101,7 +101,7 @@ def wish():
 
 
 
-        speak("good night sir i am virtual assistent friday")  
+        speak("good evening sir i am virtual assistent friday")  
 
 
 

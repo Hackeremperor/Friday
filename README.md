@@ -1,2 +1,2 @@
-# JARVIS AI ASSistent In PYTHON
-Hello guys you can use it modify for your own facilitys.
+# JARVIS AI Assistant In Python
+Hello guys you can use it modify for your own facilities!

@@ -50,43 +50,18 @@ def takeCommand():
         
         # Handle Exceptions
         try:
-            print("Recognizing")
+            print("Recognizing...")
             
             # Using Google Speech-To-Text Engine
             Query = r.recognize_google(audio, language='en-in')
 
-            print("the command is printed=", Query)
+            print(">>>", Query)
         except Exception as e:
-            print(e)
-            print("Say that again sir")
+            print("Say that again sir!")
             
-            return "None"
+            return None
         
         return Query
-    
-    with sr.Microphone() as source:
-        print("Listning....")
-        
-        audio = r.listen(source)
-
-    try:
-        print("Recognizing...") 
-
-        text = r.recognize_google(audio,language='en-in')
-
-        print(text)
-    
-    # Handle Exceptions
-    except Exception:
-
-
-        speak("Error!")
-
-        print("Network connection error") 
-        
-        return "none"
-
-    return text
 
 # Main Function
 if __name__ == "__main__":
@@ -136,59 +111,59 @@ if __name__ == "__main__":
             speak("opening stackoverflow")
 
         elif 'open youtube' in query or "open video online" in query:
-            webbrowser.open("www.youtube.com")
-
             speak("Opening YouTube")
 
-        elif 'open github' in query:
-            webbrowser.open("https://www.github.com")
+            webbrowser.open("www.youtube.com")
 
+        elif 'open github' in query:
             speak("opening github")  
 
-        elif 'open facebook' in query:
-            webbrowser.open("https://www.facebook.com")
+            webbrowser.open("https://www.github.com")
 
+        elif 'open facebook' in query:
             speak("opening facebook")      
 
-        elif 'open instagram' in query:
-            webbrowser.open("https://www.instagram.com")
+            webbrowser.open("https://www.facebook.com")
 
+        elif 'open instagram' in query:
             speak("opening instagram")    
 
-        elif 'open google' in query:            
-            speak("opening google")
+            webbrowser.open("https://www.instagram.com")
 
+        elif 'open google' in query:            
             webbrowser.open("https://google.com")
+
+            speak("opening google")
             
         elif 'open yahoo' in query:
-            webbrowser.open("https://www.yahoo.com")
-
             speak("opening yahoo")
+
+            webbrowser.open("https://www.yahoo.com")
             
         elif 'open gmail' in query:
-            webbrowser.open("https://mail.google.com")
-
             speak("opening google mail") 
+
+            webbrowser.open("https://mail.google.com")
             
         elif 'open snapdeal' in query:
-            webbrowser.open("https://www.snapdeal.com") 
+            speak("opening snapdeal") 
 
-            speak("opening snapdeal")  
+            webbrowser.open("https://www.snapdeal.com") 
              
         elif 'open amazon' in query or 'shop online' in query:
-            webbrowser.open("https://www.amazon.com")
-
             speak("opening amazon")
 
-        elif 'open flipkart' in query:
-            webbrowser.open("https://www.flipkart.com")
+            webbrowser.open("https://www.amazon.com")
 
+        elif 'open flipkart' in query:
             speak("opening flipkart")   
 
-        elif 'open ebay' in query:
-            webbrowser.open("https://www.ebay.com")
+            webbrowser.open("https://www.flipkart.com")
 
+        elif 'open ebay' in query:
             speak("opening ebay")
+            
+            webbrowser.open("https://www.ebay.com")
 
         elif 'music from pc' in query or "music" in query or "songs" in query or "play songs" in query :
             speak("ok i am playing music")
@@ -207,22 +182,29 @@ if __name__ == "__main__":
             os.startfile(os.path.join(video_dir,videos[0]))  
 
         elif 'good bye' in query:
-            speak("good bye , have a nice time")
+            speak("good bye sir, have a nice time")
 
             exit()
 
         elif "shutdown" in query:
-            speak("shutting down")
-            
-            os.system('shutdown -s') 
+            print("Are you sure?")
+            confirmation = takeCommand().lower()
 
+            if "yes" in confirmation:
+                print("Shutting Down...")
+                speak("Shutting Down")
+                os.system('shutdown -s') 
+            else:
+                print("OK!")
+                speak("Okay")
+            
         elif "what\'s up" in query or 'how are you' in query:
             stMsgs = ['Just doing my thing!', 'I am fine!', 'Nice!', 'I am nice and full of energy','i am okey ! How are you']
 
             ans_q = random.choice(stMsgs)
             speak(ans_q)  
 
-            ans_take_from_user_how_are_you = takecommand("take command")
+            ans_take_from_user_how_are_you = takeCommand()
 
             if 'fine' in ans_take_from_user_how_are_you or 'happy' in ans_take_from_user_how_are_you or 'okey' in ans_take_from_user_how_are_you:
                 speak('Good to hear that!')  
@@ -231,7 +213,6 @@ if __name__ == "__main__":
                 speak('What can I do to make you happy, sir?')  
 
         elif 'make you' in query or 'created you' in query or 'develop you' in query:
-
             ans_m = " For your information Genius Aditya Singh Created me ! I give Lot of Thannks to Him "
             print(ans_m)
             
@@ -274,9 +255,6 @@ if __name__ == "__main__":
             
             exit()
 
-        elif 'jokes' in query or 'tell me a joke' in query or 'tell me jokes' in query :
-            talk =(pyjokes.get_joke())
-
         else:
             temp = query.replace(' ','+')
 
@@ -288,7 +266,3 @@ if __name__ == "__main__":
             speak(res_g)
 
             webbrowser.open(g_url+temp)  
-
-
-
-

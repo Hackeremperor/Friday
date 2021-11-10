@@ -1,13 +1,12 @@
 #Project Friday
 
-import speech_recognition as sr 
+import speech_recognition as sr
 import datetime
 import wikipedia
 import pyttsx3
 import webbrowser
 import random
 import os
-import pyjokes
 
 from requests import get
 
